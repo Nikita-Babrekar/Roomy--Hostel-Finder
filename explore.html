@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Hostels | UniStay</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Poppins', sans-serif; background-color: #f8fafc; }
+        .navbar { background: white; border-bottom: 1px solid #e2e8f0; }
+        .search-mini { background: #f1f5f9; border-radius: 50px; padding: 5px 20px; }
+        .filter-pill { border: 1px solid #e2e8f0; border-radius: 50px; padding: 5px 15px; font-size: 0.85rem; cursor: pointer; background: white; white-space: nowrap; }
+        .filter-pill:hover { background: #6366f1; color: white; border-color: #6366f1; }
+        .hostel-list-container { height: calc(100vh - 70px); overflow-y: auto; padding: 20px; }
+        .map-container { height: calc(100vh - 70px); background: #e2e8f0; position: sticky; top: 70px; }
+        .h-card { border: none; border-radius: 20px; overflow: hidden; transition: 0.3s; margin-bottom: 20px; }
+        .h-card:hover { box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
+        .price-text { color: #6366f1; font-weight: 700; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar sticky-top">
+    <div class="container-fluid px-4">
+        <a class="navbar-brand fw-bold text-primary" href="index.html">UniStay</a>
+        <div class="search-mini d-none d-md-flex align-items-center w-50">
+            <i class="fas fa-search text-muted me-2"></i>
+            <input type="text" class="form-control border-0 bg-transparent shadow-none" placeholder="Search near your college...">
+        </div>
+        <div class="d-flex align-items-center">
+            <span class="me-3 d-none d-sm-block small">Welcome, Student</span>
+            <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width: 35px; height: 35px;">S</div>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-7 hostel-list-container">
+            <div class="d-flex gap-2 mb-4 pb-2 overflow-auto">
+                <div class="filter-pill active bg-primary text-white">All Types</div>
+                <div class="filter-pill">Boys Only</div>
+                <div class="filter-pill">Girls Only</div>
+                <div class="filter-pill">Under ₹8,000</div>
+                <div class="filter-pill">With Mess</div>
+                <div class="filter-pill">AC Rooms</div>
+            </div>
+
+            <h5 class="fw-bold mb-3">Available Accommodations</h5>
+
+            <div class="card h-card shadow-sm">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="https://images.unsplash.com/photo-1555854817-5b2260d1bd63?auto=format&fit=crop&w=500&q=60" class="img-fluid h-100 w-100" style="object-fit: cover;" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="fw-bold mb-1">Zolo Scholars PG</h5>
+                                <span class="price-text">₹7,500/mo</span>
+                            </div>
+                            <p class="text-muted small"><i class="fas fa-walking me-1"></i> 10 mins walk to University</p>
+                            <div class="d-flex gap-3 mb-3 text-muted small">
+                                <span><i class="fas fa-wifi text-primary"></i> Free WiFi</span>
+                                <span><i class="fas fa-utensils text-primary"></i> 3 Meals</span>
+                            </div>
+                            <a href="detail.html" class="btn btn-outline-primary rounded-pill btn-sm px-4">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+        <div class="col-lg-5 d-none d-lg-block p-0">
+            <div class="map-container d-flex align-items-center justify-content-center">
+                <div class="text-center">
+                    <i class="fas fa-map-marked-alt fa-3x text-muted mb-3"></i>
+                    <p class="text-muted">Google Maps API will load here</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

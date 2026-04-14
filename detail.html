@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zolo Scholars PG | UniStay</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        .gallery-main { border-radius: 20px; height: 450px; object-fit: cover; width: 100%; }
+        .gallery-thumb { border-radius: 15px; height: 100px; object-fit: cover; width: 100%; cursor: pointer; }
+        .sticky-card { position: sticky; top: 100px; border: none; border-radius: 25px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); }
+        .amenity-box { background: #f8fafc; border-radius: 15px; padding: 20px; text-align: center; height: 100%; }
+        .btn-book { background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); border: none; color: white; }
+    </style>
+</head>
+<body>
+
+<div class="container my-5">
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="explore.html">Explore</a></li>
+            <li class="breadcrumb-item active">Zolo Scholars PG</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <img src="https://images.unsplash.com/photo-1555854817-5b2260d1bd63" class="gallery-main mb-3 shadow-sm">
+            <div class="row g-2 mb-5">
+                <div class="col-3"><img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf" class="gallery-thumb"></div>
+                <div class="col-3"><img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af" class="gallery-thumb"></div>
+                <div class="col-3"><img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304" class="gallery-thumb"></div>
+                <div class="col-3"><img src="https://images.unsplash.com/photo-1512918766671-ad651ec30730" class="gallery-thumb"></div>
+            </div>
+
+            <h2 class="fw-bold">Zolo Scholars Premium PG</h2>
+            <p class="text-muted"><i class="fas fa-map-marker-alt text-primary"></i> Sector 5, Chhatrapati Sambhajinagar</p>
+            <hr>
+
+            <h5 class="fw-bold mt-4">Description</h5>
+            <p class="text-muted">High-quality accommodation designed specifically for students. Features a silent study hall, 24/7 power backup, and a professional mess serving healthy meals. Located just minutes away from the major coaching hubs.</p>
+
+            <h5 class="fw-bold mt-5">Common Amenities</h5>
+            <div class="row g-3">
+                <div class="col-6 col-md-3"><div class="amenity-box"><i class="fas fa-wifi fa-2x text-primary mb-2"></i><p class="mb-0 small fw-bold">High-Speed WiFi</p></div></div>
+                <div class="col-6 col-md-3"><div class="amenity-box"><i class="fas fa-utensils fa-2x text-primary mb-2"></i><p class="mb-0 small fw-bold">Full Mess</p></div></div>
+                <div class="col-6 col-md-3"><div class="amenity-box"><i class="fas fa-laundry fa-2x text-primary mb-2"></i><p class="mb-0 small fw-bold">Laundry</p></div></div>
+                <div class="col-6 col-md-3"><div class="amenity-box"><i class="fas fa-shield-alt fa-2x text-primary mb-2"></i><p class="mb-0 small fw-bold">CCTV Security</p></div></div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card sticky-card p-4">
+                <h3 class="fw-bold">₹7,500<span class="fs-6 text-muted">/month</span></h3>
+                <p class="text-success small fw-bold"><i class="fas fa-bolt"></i> Low Price for this Area</p>
+                <hr>
+                <div class="mb-3">
+                    <label class="small fw-bold">Select Sharing Type</label>
+                    <select class="form-select rounded-3">
+                        <option>Double Sharing (₹7,500)</option>
+                        <option>Single Room (₹12,000)</option>
+                        <option>Triple Sharing (₹6,000)</option>
+                    </select>
+                </div>
+                <button class="btn btn-book w-100 py-3 rounded-pill fw-bold mb-3">Book Visit</button>
+                <button class="btn btn-outline-secondary w-100 rounded-pill"><i class="fab fa-whatsapp me-2"></i>Contact Owner</button>
+                <p class="text-center mt-3 text-muted x-small" style="font-size: 0.75rem;">No booking fees for students</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

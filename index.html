@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniStay | Find Your Student Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #4f46e5;
+            --accent-color: #f43f5e;
+            --bg-light: #f8fafc;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: #1e293b;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .navbar-brand { font-weight: 700; color: var(--primary-color); text-decoration: none; }
+        .navbar-brand:hover { color: var(--secondary-color); }
+
+        .hero {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            padding: 100px 0;
+            color: white;
+            border-radius: 0 0 50px 50px;
+            text-align: center;
+        }
+
+        .search-container {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-top: -50px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hostel-card {
+            border: none;
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            background: white;
+            margin-bottom: 30px;
+        }
+
+        .hostel-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .hostel-img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .badge-verified {
+            background-color: #10b981;
+            font-size: 0.7rem;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            z-index: 10;
+        }
+
+        .price-tag {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .amenity-icon {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-right: 10px;
+        }
+
+        .filter-section {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            position: sticky;
+            top: 100px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border: none;
+            border-radius: 10px;
+            padding: 10px 25px;
+        }
+
+        #map-preview { cursor: pointer; transition: color 0.2s; }
+        #map-preview:hover { color: var(--secondary-color) !important; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html"><i class="fas fa-university me-2"></i>UniStay</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item"><a class="nav-link" href="explore.html">Explore</a></li>
+                <li class="nav-item"><a class="nav-link" href="explore.html">Nearby Map</a></li>
+                <li class="nav-item ms-lg-3"><a class="btn btn-outline-primary rounded-pill px-4" href="login.html">Login</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Your Perfect Study Den Awaits</h1>
+        <p class="lead">Find verified hostels near your university in seconds.</p>
+    </div>
+</header>
+
+<div class="container">
+    <div class="search-container">
+        <form class="row g-3" action="explore.html">
+            <div class="col-md-5">
+                <div class="input-group">
+                    <span class="input-group-text bg-transparent border-0"><i class="fas fa-map-marker-alt text-primary"></i></span>
+                    <input type="text" class="form-control border-0" placeholder="Which University/Area?" required>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <select class="form-select border-0">
+                    <option selected>Occupancy</option>
+                    <option>Single</option>
+                    <option>Double</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <input type="number" class="form-control border-0" placeholder="Max Rent">
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary w-100 h-100">Search</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<main class="container my-5">
+    <div class="row">
+        <aside class="col-lg-3 d-none d-lg-block">
+            <div class="filter-section shadow-sm">
+                <h5 class="fw-bold mb-3">Filters</h5>
+                <hr>
+                <p class="fw-bold mb-2">Gender</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="boys">
+                    <label class="form-check-label" for="boys">Boys Only</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="girls">
+                    <label class="form-check-label" for="girls">Girls Only</label>
+                </div>
+                
+                <p class="fw-bold mt-4 mb-2">Amenities</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="wifi">
+                    <label class="form-check-label" for="wifi">Free Wi-Fi</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="mess">
+                    <label class="form-check-label" for="mess">Food / Mess</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="ac">
+                    <label class="form-check-label" for="ac">Air Conditioning</label>
+                </div>
+            </div>
+        </aside>
+
+        <section class="col-lg-9">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="fw-bold">Found 12 Hostels Near You</h4>
+                <a href="explore.html" id="map-preview" class="text-primary text-decoration-none"><i class="fas fa-map"></i> View on Map</a>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="hostel-card position-relative">
+                        <span class="badge badge-verified"><i class="fas fa-check-circle me-1"></i> Verified</span>
+                        <img src="https://images.unsplash.com/photo-1555854817-5b2260d1bd63?auto=format&fit=crop&w=800&q=80" class="hostel-img w-100" alt="Hostel Room">
+                        <div class="p-3">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="fw-bold mb-1">Sunrise Premium PG</h5>
+                                <span class="price-tag">₹8,500<small class="text-muted">/mo</small></span>
+                            </div>
+                            <p class="text-muted small"><i class="fas fa-walking me-1"></i> 5 mins from City Engineering College</p>
+                            <div class="my-2">
+                                <span class="amenity-icon"><i class="fas fa-wifi"></i> Wi-Fi</span>
+                                <span class="amenity-icon"><i class="fas fa-utensils"></i> Mess</span>
+                                <span class="amenity-icon"><i class="fas fa-bolt"></i> Backup</span>
+                            </div>
+                            <a href="detail.html" class="btn btn-outline-primary w-100 mt-2">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="hostel-card">
+                        <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=800&q=80" class="hostel-img w-100" alt="Hostel Room">
+                        <div class="p-3">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="fw-bold mb-1">Elite Girls Residency</h5>
+                                <span class="price-tag">₹12,000<small class="text-muted">/mo</small></span>
+                            </div>
+                            <p class="text-muted small"><i class="fas fa-walking me-1"></i> 2 mins from Medical Hub</p>
+                            <div class="my-2">
+                                <span class="amenity-icon"><i class="fas fa-snowflake"></i> AC</span>
+                                <span class="amenity-icon"><i class="fas fa-lock"></i> 24/7 Security</span>
+                            </div>
+                            <a href="detail.html" class="btn btn-outline-primary w-100 mt-2">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

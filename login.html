@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | UniStay</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --student-grad: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --owner-grad: linear-gradient(135deg, #f43f5e 0%, #fb923c 100%);
+            --transition-speed: 0.4s;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f1f5f9;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            width: 1000px;
+            max-width: 95%;
+            display: flex;
+            min-height: 600px;
+        }
+
+        .login-side-panel {
+            flex: 1;
+            background: var(--student-grad);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 40px;
+            transition: background var(--transition-speed) ease;
+            text-align: center;
+        }
+
+        .login-side-panel.owner-active {
+            background: var(--owner-grad);
+        }
+
+        .login-form-panel {
+            flex: 1.2;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .user-toggle {
+            background: #f1f5f9;
+            padding: 5px;
+            border-radius: 15px;
+            display: inline-flex;
+            margin-bottom: 30px;
+            width: fit-content;
+        }
+
+        .toggle-btn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background: transparent;
+            color: #64748b;
+        }
+
+        .toggle-btn.active {
+            background: white;
+            color: #1e293b;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .form-control {
+            border-radius: 12px;
+            padding: 12px 15px;
+            border: 2px solid #f1f5f9;
+            margin-bottom: 20px;
+        }
+
+        .form-control:focus {
+            border-color: #6366f1;
+            box-shadow: none;
+        }
+
+        .btn-login {
+            background: var(--student-grad);
+            border: none;
+            color: white;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 700;
+            width: 100%;
+            margin-top: 10px;
+            transition: transform 0.2s;
+        }
+
+        .btn-login:hover {
+            transform: scale(1.02);
+            color: white;
+        }
+
+        .owner-active .btn-login {
+            background: var(--owner-grad);
+        }
+
+        .social-login {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #f1f5f9;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .social-btn:hover { background: #f8fafc; }
+
+        @media (max-width: 768px) {
+            .login-side-panel { display: none; }
+            .login-form-panel { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body id="mainBody">
+
+<div class="login-container">
+    <div class="login-side-panel" id="sidePanel">
+        <h1 class="fw-bold mb-3" id="welcomeTitle">Hello Student!</h1>
+        <p class="opacity-75" id="welcomeText">Enter your details and start your journey with us.</p>
+        <div class="mt-4">
+            <i class="fas fa-university fa-5x"></i>
+        </div>
+    </div>
+
+    <div class="login-form-panel">
+        <div class="user-toggle">
+            <button class="toggle-btn active" onclick="switchUser('student')">Student</button>
+            <button class="toggle-btn" onclick="switchUser('owner')">Hostel Owner</button>
+        </div>
+
+        <h2 class="fw-bold mb-1">Login</h2>
+        <p class="text-muted mb-4">Please enter your account details.</p>
+
+        <form action="/login" method="POST">
+            <input type="hidden" name="user_type" id="userTypeInput" value="student">
+            
+            <div class="mb-3">
+                <label class="form-label small fw-bold">Email Address</label>
+                <input type="email" class="form-control" placeholder="name@clg.edu" required>
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label small fw-bold">Password</label>
+                <input type="password" class="form-control" placeholder="••••••••" required>
+            </div>
+
+            <div class="d-flex justify-content-between mb-4">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="remember">
+                    <label class="form-check-label small" for="remember">Remember me</label>
+                </div>
+                <a href="forgot_password.html" class="small text-decoration-none text-primary fw-bold">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="btn btn-login">Sign In</button>
+        </form>
+
+        <div class="text-center mt-4">
+            <p class="small text-muted">Or login with</p>
+            <div class="social-login">
+                <div class="social-btn"><i class="fab fa-google text-danger"></i></div>
+                <div class="social-btn"><i class="fab fa-apple"></i></div>
+            </div>
+        </div>
+
+        <p class="text-center mt-4 small">
+            Don't have an account? <a href="signup.html" class="fw-bold text-decoration-none text-primary">Sign Up</a>
+        </p>
+    </div>
+</div>
+
+<script>
+    function switchUser(type) {
+        const sidePanel = document.getElementById('sidePanel');
+        const welcomeTitle = document.getElementById('welcomeTitle');
+        const welcomeText = document.getElementById('welcomeText');
+        const userTypeInput = document.getElementById('userTypeInput');
+        const buttons = document.querySelectorAll('.toggle-btn');
+        const container = document.querySelector('.login-container');
+
+        buttons.forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        if (type === 'owner') {
+            sidePanel.classList.add('owner-active');
+            container.classList.add('owner-active');
+            welcomeTitle.innerText = "Welcome, Owner!";
+            welcomeText.innerText = "Manage your property and reach thousands of students effortlessly.";
+            userTypeInput.value = "owner";
+            document.querySelector('.fa-university').className = "fas fa-hotel fa-5x";
+        } else {
+            sidePanel.classList.remove('owner-active');
+            container.classList.remove('owner-active');
+            welcomeTitle.innerText = "Hello Student!";
+            welcomeText.innerText = "Enter your details and start your journey with us.";
+            userTypeInput.value = "student";
+            document.querySelector('.fa-hotel').className = "fas fa-university fa-5x";
+        }
+    }
+</script>
+
+</body>
+</html>

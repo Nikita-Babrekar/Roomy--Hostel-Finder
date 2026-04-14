@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join UniStay | Sign Up</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --student-grad: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --owner-grad: linear-gradient(135deg, #f43f5e 0%, #fb923c 100%);
+        }
+        body { font-family: 'Poppins', sans-serif; background-color: #f1f5f9; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+        .signup-container { background: white; border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); overflow: hidden; width: 1100px; max-width: 95%; display: flex; min-height: 700px; }
+        .side-panel { flex: 1; background: var(--student-grad); color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px; text-align: center; transition: 0.4s; }
+        .side-panel.owner-active { background: var(--owner-grad); }
+        .form-panel { flex: 1.5; padding: 50px; }
+        .user-toggle { background: #f1f5f9; padding: 5px; border-radius: 15px; display: inline-flex; margin-bottom: 25px; }
+        .toggle-btn { padding: 8px 20px; border: none; border-radius: 12px; cursor: pointer; font-weight: 600; background: transparent; color: #64748b; }
+        .toggle-btn.active { background: white; color: #1e293b; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .form-control { border-radius: 12px; border: 2px solid #f1f5f9; padding: 12px; margin-bottom: 15px; }
+        .btn-signup { background: var(--student-grad); border: none; color: white; padding: 12px; border-radius: 12px; font-weight: 700; width: 100%; transition: 0.3s; }
+        .owner-active .btn-signup { background: var(--owner-grad); }
+    </style>
+</head>
+<body>
+
+<div class="signup-container" id="container">
+    <div class="side-panel" id="sidePanel">
+        <h2 class="fw-bold">Join the Community</h2>
+        <p class="opacity-75">Your journey to the perfect student life starts here.</p>
+        <i class="fas fa-user-plus fa-4x mt-3"></i>
+    </div>
+
+    <div class="form-panel">
+        <div class="user-toggle">
+            <button class="toggle-btn active" onclick="updateMode('student')">Student</button>
+            <button class="toggle-btn" onclick="updateMode('owner')">Hostel Owner</button>
+        </div>
+        <h3 class="fw-bold">Create Account</h3>
+        <p class="text-muted small">Fill in your details to get started.</p>
+
+        <form>
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="small fw-bold">Full Name</label>
+                    <input type="text" class="form-control" placeholder="John Doe">
+                </div>
+                <div class="col-md-6">
+                    <label class="small fw-bold">Phone Number</label>
+                    <input type="text" class="form-control" placeholder="+91 00000...">
+                </div>
+            </div>
+            <label class="small fw-bold">Email Address</label>
+            <input type="email" class="form-control" placeholder="email@university.com">
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="small fw-bold">Password</label>
+                    <input type="password" class="form-control" placeholder="••••••••">
+                </div>
+                <div class="col-md-6">
+                    <label class="small fw-bold">Confirm Password</label>
+                    <input type="password" class="form-control" placeholder="••••••••">
+                </div>
+            </div>
+
+            <div class="form-check mb-4">
+                <input type="checkbox" class="form-check-input" id="terms">
+                <label class="form-check-label small" for="terms">I agree to the Terms & Privacy Policy</label>
+            </div>
+
+            <button type="submit" class="btn btn-signup">Create Account</button>
+        </form>
+        <p class="text-center mt-4 small">Already have an account? <a href="login.html" class="text-primary fw-bold text-decoration-none">Login</a></p>
+    </div>
+</div>
+
+<script>
+    function updateMode(type) {
+        const sidePanel = document.getElementById('sidePanel');
+        const container = document.getElementById('container');
+        const buttons = document.querySelectorAll('.toggle-btn');
+        buttons.forEach(b => b.classList.remove('active'));
+        event.target.classList.add('active');
+
+        if(type === 'owner') {
+            sidePanel.classList.add('owner-active');
+            container.classList.add('owner-active');
+        } else {
+            sidePanel.classList.remove('owner-active');
+            container.classList.remove('owner-active');
+        }
+    }
+</script>
+</body>
+</html>
