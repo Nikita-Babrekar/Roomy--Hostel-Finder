@@ -34,8 +34,3 @@ The project follows a **Model-View-Controller (MVC)** pattern using the Flask fr
 | **Templating** | Jinja2 | Dynamic data rendering |
 
 ---
-
-
-│   ├── detail.html     # Individual Hostel Page
-│   └── auth/           # Login, Signup, Forgot Password
-└── README.md           # Documentation
