@@ -42,28 +42,28 @@
         <h3 class="fw-bold">Create Account</h3>
         <p class="text-muted small">Fill in your details to get started.</p>
 
-        <form>
+        <form action="/signup" method="POST">
             <div class="row">
                 <div class="col-md-6">
                     <label class="small fw-bold">Full Name</label>
-                    <input type="text" class="form-control" placeholder="John Doe">
+                    <input type="text" class="form-control" placeholder="John Doe" name="name">
                 </div>
                 <div class="col-md-6">
                     <label class="small fw-bold">Phone Number</label>
-                    <input type="text" class="form-control" placeholder="+91 00000...">
+                    <input type="text" class="form-control" placeholder="+91 00000..." name="phone">
                 </div>
             </div>
             <label class="small fw-bold">Email Address</label>
-            <input type="email" class="form-control" placeholder="email@university.com">
+            <input type="email" class="form-control" placeholder="email@university.com" name="email">
             
             <div class="row">
                 <div class="col-md-6">
                     <label class="small fw-bold">Password</label>
-                    <input type="password" class="form-control" placeholder="••••••••">
+                    <input type="password" class="form-control" placeholder="••••••••" name="password">
                 </div>
                 <div class="col-md-6">
                     <label class="small fw-bold">Confirm Password</label>
-                    <input type="password" class="form-control" placeholder="••••••••">
+                    <input type="password" class="form-control" placeholder="••••••••" name="confirm_password">
                 </div>
             </div>
 
@@ -74,7 +74,7 @@
 
             <button type="submit" class="btn btn-signup">Create Account</button>
         </form>
-        <p class="text-center mt-4 small">Already have an account? <a href="login.html" class="text-primary fw-bold text-decoration-none">Login</a></p>
+        <p class="text-center mt-4 small">Already have an account? <a href="/login" class="text-primary fw-bold text-decoration-none">Login</a></p>
     </div>
 </div>
 
